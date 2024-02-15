@@ -1,6 +1,20 @@
 import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
+import 'dotenv/config';
 const app = express();
 
-app.get('/', (req, res) => res.send({ name: 'ken' }));
+const corsOptions = {
+    origin: 'http://localhost:5172',
+};
 
-app.listen(3000, () => console.log(`http://localhost:3000`));
+const PORT = process.env.PORT;
+
+app.use(morgan('dev'));
+app.use(cors(corsOptions));
+
+app.get('/', (req, res) => res.send({ name: 'kenjo' }));
+
+app.get('/apple', (req, res) => res.send({ name: 'apple' }));
+
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
