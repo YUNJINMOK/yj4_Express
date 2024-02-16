@@ -2,6 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import 'dotenv/config';
+import appleRouter from './Routers/appleRoutes';
+import noticeRouter from './routers/notice';
 const app = express();
 
 const corsOptions = {
@@ -14,7 +16,7 @@ app.use(morgan('dev'));
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => res.send({ name: 'kenjo' }));
-
-app.get('/apple', (req, res) => res.send({ name: 'apple' }));
+app.use('/apple', appleRouter);
+app.use('/notice', noticeRouter);
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
