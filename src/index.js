@@ -1,7 +1,8 @@
+import 'dotenv/config';
+import './db';
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import 'dotenv/config';
 import appleRouter from './Routers/appleRoutes';
 import noticeRouter from './routers/notice';
 const app = express();
@@ -12,6 +13,7 @@ const corsOptions = {
 
 const PORT = process.env.PORT;
 
+app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors(corsOptions));
 
