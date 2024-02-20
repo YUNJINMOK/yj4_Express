@@ -11,13 +11,14 @@ export const getList = async (req, res) => {
 export const noticeWrite = async (req, res) => {
     try {
         const { title, description, Writer } = req.body;
+
         const data = await Notice.create({
             title,
             description,
             createdAt: Date.now(),
             Writer,
         });
-        return res.send({ result: 'ok', data });
+        return res.send({ result: true, data });
     } catch (error) {
         console.log(error);
     }

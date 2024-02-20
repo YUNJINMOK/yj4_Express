@@ -8,7 +8,7 @@ import noticeRouter from './routers/notice';
 const app = express();
 
 const corsOptions = {
-    origin: 'http://localhost:5172',
+    origin: ['http://localhost:5172', 'http://localhost:3000'],
 };
 
 const PORT = process.env.PORT;
